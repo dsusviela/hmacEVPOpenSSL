@@ -1,6 +1,6 @@
 /*
 CRYPTOGRAPHY COURSE FIng - UdelaR
-Daniel Susviela 4.894.156-5
+Daniel Susviela
 */
 
 #include <openssl/evp.h>
