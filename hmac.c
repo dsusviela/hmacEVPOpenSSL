@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
   const EVP_MD *md = NULL;
   EVP_PKEY *key0 = NULL;
   unsigned char res[EVP_MAX_MD_SIZE];
-  int resLen = 0;
+  size_t resLen = 0;
 
   OpenSSL_add_all_digests();
 
