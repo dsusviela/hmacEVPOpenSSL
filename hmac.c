@@ -183,7 +183,7 @@ int main(int argc, unsigned char **argv) {
   strcpy(concatenatedTextprimeAndS2, s2);
   strcat(concatenatedTextprimeAndS2, tPrime);
 
-  /* for debugging purposes only 
+  /* para debugear
   printf("tprime and s2: ");
   for (int i = 0; i < auxLen2; i++) {
     printf("%02x", concatenatedTextprimeAndS2[i]);
