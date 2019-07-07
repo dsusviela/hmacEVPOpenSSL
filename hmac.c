@@ -41,9 +41,14 @@ int main(int argc, unsigned char **argv) {
   int textLen = strlen(text);
   unsigned char *k = argv[2];
   int b = strlen(k);
-  printf("%d", b);
-  printf("\n");
   unsigned char k0[19];
+
+  /* for debugging purposes only */
+  for (int i = 0; i < textLen; i++) {
+    printf("%02x", text[i]);
+  }
+  printf("\n");
+  printf("\n");
 
   // se obtiene la clave k0
   if (b == 20) {
@@ -66,14 +71,41 @@ int main(int argc, unsigned char **argv) {
     strcpy(k0, kAux);
   }
 
-  /* for debugging purposes only
+  /* for debugging purposes only */
   for (int i = 0; i < 20; i++) {
     printf("%02x", k0[i]);
   }
   printf("\n");
-  */
 
-  // se hace update con el texto para que se procese el mismo
+  // calculo de s1 y s2
+  unsigned char s1[19];
+  unsigned char s2[19];
+  for (int i = 0; i < 20; i++) {
+    s1[i] = k0[i] ^ 0x36;  // 0x36 es la rep hexadecimal de ipad
+    s2[i] = k0[i] ^ 0x5C;  // 0x36 es la rep hexadecimal de opad
+  }
+
+  /* for debugging purposes only */
+  for (int i = 0; i < 20; i++) {
+    printf("%02x", s1[i]);
+  }
+  printf("\n");
+  for (int i = 0; i < 20; i++) {
+    printf("%02x", s2[i]);
+  }
+  printf("\n");
+
+  // calcular T'
+  int auxLen = textLen + 20;
+  unsigned char auxText[auxLen];
+  strcpy(auxText, s1);
+  strcat(auxText, text);
+  printf("\n");
+  /* for debugging purposes only */
+  for (int i = 0; i < auxLen; i++) {
+    printf("%02x", auxText[i]);
+  }
+  printf("\n");
 
   // se obtiene el resultado
 
